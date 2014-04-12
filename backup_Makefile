@@ -1,0 +1,56 @@
+#
+# define some Makefile variables for the compiler and compiler flags
+# to use Makefile variables later in the Makefile: $()
+#
+#  -g    adds debugging information to the executable file
+#  -Wall turns on most, but not all, compiler warnings
+#
+# for C++ define  CC = g++
+#
+CC = g++
+TARGET = runner
+DEBUG = -g
+LFLAGS = -Wall $(DEBUG) -I. -lm
+CFLAGS = -Wall -c $(DEBUG)
+SRCDIR = src
+OBJDIR = obj
+BINDIR = bin
+
+# typing 'make' will invoke the first target entry in the file 
+# (in this case the default target entry)
+# you can name this target entry anything, but "default" or "all"
+# are the most commonly used names by convention
+#
+all: strings linked_list
+
+.PHONY: all clean
+
+# To create the executable file count we need the object files
+#
+strings:  $(SRCDIR)/i_to_a.h $(SRCDIR)/a_to_i.h $(SRCDIR)/reverse.h $(SRCDIR)/strings.cpp
+	$(CC) $(LFLAGS) $(BINDIR)/a_to_i.o $(BINDIR)/i_to_a.o $(BINDIR)/reverse.o $(SRCDIR)/strings.cpp -o $(BINDIR)/strings
+
+linked_list:  $(SRCDIR)/linked_list.cpp
+	$(CC) $(LFLAGS) $(SRCDIR)/linked_list.cpp -o $(BINDIR)/linked_list
+
+# To create the object file, we need the source files
+#
+i_to_a.o: $(SRCDIR)/i_to_a.h $(SRCDIR)/i_to_a.cpp
+	$(CC) $(CFLAGS) $(SRCDIR)/i_to_a.cpp
+
+a_to_i.o: $(SRCDIR)/a_to_i.h $(SRCDIR)/a_to_i.cpp
+	$(CC) $(CFLAGS) $(SRCDIR)/a_to_i.cpp
+
+reverse.o: $(SRCDIR)/reverse.h $(SRCDIR)/reverse.cpp
+	$(CC) $(CFLAGS) $(SRCDIR)/reverse.cpp
+
+linked_list.o: $(SRCDIR)/linked_list.cpp
+	$(CC) $(CFLAGS) $(SRCDIR)/linked_list.cpp 
+
+# To start over from scratch, type 'make clean'.  This
+# removes the executable file, as well as old .o object
+# files and *~ backup files:
+#
+clean: 
+	$(RM) $(OBJDIR)/*.o $(BINDIR)/*
+
