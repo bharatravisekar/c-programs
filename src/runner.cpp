@@ -3,6 +3,7 @@
 #include "reverse.h"
 #include "templates.h"
 #include "doubly_linked_list.h"
+#include "binary_search_tree.h"
 #include <iostream>
 #include <string>
 
@@ -39,6 +40,17 @@ int main(int argc, char* args[]) {
     print_dll();
   } else if (strcmp(args[1], "5") == 0) {
     test();
+  } else if (strcmp(args[1], "6") == 0) {
+    insert_into_bstree(6);
+    insert_into_bstree(2);
+    insert_into_bstree(8);
+    insert_into_bstree(4);
+    insert_into_bstree(1);
+    insert_into_bstree(0);
+    insert_into_bstree(9);
+    print_in_order_bstree();
+    print_pre_order_bstree();
+    print_post_order_bstree();
   } else {
     cout << "Unknown option" << endl;
   }

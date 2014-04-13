@@ -5,38 +5,38 @@
  * @author Bharat Ravisekar (rbharat@gmail.com)
  * */
 
-/* A Node */
+/* A DLLNode */
 
 using namespace std;
 
-class Node {
+class DLLNode {
   public: 
   int val;
-  Node* prev;
-  Node* next;
+  DLLNode* prev;
+  DLLNode* next;
 
-  Node();
-  Node(int _val, Node* _prev, Node* _next);
+  DLLNode();
+  DLLNode(int _val, DLLNode* _prev, DLLNode* _next);
 };
 
 /* Constructor */
-Node::Node() {
-  Node(val, NULL, NULL);
+DLLNode::DLLNode() {
+  DLLNode(val, NULL, NULL);
 }
 
-Node::Node(int _val, Node* _prev, Node* _next) {
+DLLNode::DLLNode(int _val, DLLNode* _prev, DLLNode* _next) {
   this->val = _val;
   this->prev = _prev;
   this->next = _next;
 }
 
-typedef Node* NodePtr;
+typedef DLLNode* DLLNodePtr;
 
-NodePtr head = NULL;
-NodePtr tail = NULL;
+DLLNodePtr head = NULL;
+DLLNodePtr tail = NULL;
 
 void add_dll_node(int value) {
-  NodePtr nodePtr = new Node();
+  DLLNodePtr nodePtr = new DLLNode();
   nodePtr->val = value;
     
   if (head == NULL) {
@@ -55,7 +55,7 @@ int pop_dll_node() {
     return -1;
   } else {
     int value = head->val;
-    NodePtr oldHead = head;
+    DLLNodePtr oldHead = head;
     head = head->next;
     delete(oldHead);
 
@@ -65,7 +65,7 @@ int pop_dll_node() {
 }
 
 void print_dll() {
-  NodePtr temp = head;
+  DLLNodePtr temp = head;
   cout << "Linked list: ";
   while(temp != NULL) {
     cout << temp->val << " ";
