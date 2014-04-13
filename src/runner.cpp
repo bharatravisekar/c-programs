@@ -41,13 +41,13 @@ int main(int argc, char* args[]) {
   } else if (strcmp(args[1], "5") == 0) {
     test();
   } else if (strcmp(args[1], "6") == 0) {
-    insert_into_bstree(6);
-    insert_into_bstree(2);
-    insert_into_bstree(8);
-    insert_into_bstree(4);
-    insert_into_bstree(1);
-    insert_into_bstree(0);
-    insert_into_bstree(9);
+    insert_into_bstree_recur(6);
+    insert_into_bstree_recur(2);
+    insert_into_bstree_recur(8);
+    insert_into_bstree_recur(4);
+    insert_into_bstree_recur(1);
+    insert_into_bstree_recur(0);
+    insert_into_bstree_recur(9);
     print_in_order_bstree();
     print_pre_order_bstree();
     print_post_order_bstree();

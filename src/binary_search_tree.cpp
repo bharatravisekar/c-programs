@@ -28,6 +28,33 @@ typedef BTNode* BTNodePtr;
 
 BTNodePtr root = NULL;
 
+void insert_into_bstree_recur_int(BTNodePtr newNode, BTNodePtr tempParent) {
+  if (newNode->val <= tempParent->val) {
+    if (tempParent->left == NULL) {
+      tempParent->left = newNode;
+      newNode->parent = tempParent;
+    } else {
+      insert_into_bstree_recur_int(newNode, tempParent->left);
+    }
+  } else {
+    if (tempParent->right == NULL) {
+      tempParent->right = newNode;
+      newNode->parent = tempParent;
+    } else {
+      insert_into_bstree_recur_int(newNode, tempParent->right);
+    }
+  }
+}
+
+void insert_into_bstree_recur(int val) {
+  BTNodePtr newNode = new BTNode(val, NULL, NULL, NULL);
+  if (root == NULL) {
+    root = newNode;
+  } else {
+    insert_into_bstree_recur_int(newNode, root);
+  }
+}
+
 void insert_into_bstree(int val) {
   cout << "Inserting " << val << endl;
   BTNodePtr newNode = new BTNode(val, NULL, NULL, NULL);
