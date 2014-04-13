@@ -35,7 +35,7 @@ typedef Node* NodePtr;
 NodePtr head = NULL;
 NodePtr tail = NULL;
 
-void add(int value) {
+void add_dll_node(int value) {
   NodePtr nodePtr = new Node();
   nodePtr->val = value;
     
@@ -50,7 +50,7 @@ void add(int value) {
   cout << "Added element: " << value << endl;
 }
 
-int pop() {
+int pop_dll_node() {
   if (head == NULL) {
     return -1;
   } else {
@@ -64,7 +64,7 @@ int pop() {
   }
 }
 
-void print() {
+void print_dll() {
   NodePtr temp = head;
   cout << "Linked list: ";
   while(temp != NULL) {
